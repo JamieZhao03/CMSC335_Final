@@ -7,7 +7,7 @@ App Description - A geocaching diary where you record coordinates of caches you 
 
 YouTube Video Demo Link - Link to a YouTube video that provides a demo of your application. This video is very important. We will not grade a project unless a YouTube video is provided. The video does not need to have audio (narration).
 
-APIs Information - OSM API https://osmnx.readthedocs.io/en/stable/user-reference.html
+APIs Information - Leaflet API https://leafletjs.com/reference.html 
 
 Contact Email - jzhao111@terpmail.umd.edu, annika14@terpmail.umd.edu
 
