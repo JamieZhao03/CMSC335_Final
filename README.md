@@ -47,33 +47,33 @@ Contain links to tasks
 - Find Distance between Geocaches (distance.ejs)
 
 ## findpoint.ejs
+Find the coordinates of any point on the map
 - HTML and API map stuff
-Find the coordinates of any point on a map
 - API stuff, handled by someone else
-Endpoint named "/find" is called with a get request in .js to display this
+> Endpoint named "/find" is called with a get request in .js to display this
 
 ## form.ejs
-- HTML form
-Form that takes in user input:
+HTML form that takes in user input to add a point to the database
 - Name of Location (string)
 - Latitude (float)
 - Longitude (float)
 - Notes
-Endpoint named "/add" is called with a get request in .js to display this
-Action upon submit that calls an endpoint called "/addPoint" that then is a post request to process the info and return HTML displaying the info submitted
+
+> Endpoint named "/add" is called with a get request in .js to display this
+> Action upon submit that calls an endpoint called "/addPoint" that then is a post request to process the info and return HTML displaying the info submitted
 
 ## list.ejs
 Displays HTML button that says "List Locations"
-Action upon button click that calls an endpoint called "/listPoints" that then is a post request to process the info and return HTML displaying the list of points
+> Action upon button click that calls an endpoint called "/listPoints" that then is a post request to process the info and return HTML displaying the list of points
 with Name, Latitude, Longitude as headings in a table.
-Endpoint named "/list" is called with a get request in .js to display this
+> Endpoint named "/list" is called with a get request in .js to display this
 
 ## distance.ejs
 Displays HTML of a form with two inputs
-Error catching for valid coordinates (within range) - done with API, put comment for now
-Action upon submit that calls an endpoint called "/distancePoints" that then is a post request to process the info and return HTML that is the calculated distance between
+- Error catching for valid coordinates (within range) - done with API, put comment for now
+> Action upon submit that calls an endpoint called "/distancePoints" that then is a post request to process the info and return HTML that is the calculated distance between
 the first and second inputted point with  "Distance between X and Y: ____ units)
-Endpoint named "/distance" is called with a get request in .js to display this
+> Endpoint named "/distance" is called with a get request in .js to display this
 
 
 
