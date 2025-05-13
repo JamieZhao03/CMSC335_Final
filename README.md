@@ -18,16 +18,29 @@ Deployed App Link - Link to the online deployment of the app (e.g., link to Rend
 ## index.js: 
 We are going to have endpoints to different EJS files detailed below. Get ejs endpoints to display HTML. Data is added and processed in a MongoDB database
 
-"/find"
-- displays the map for finding coordinates
+1. app.get("/", (req, res) => {...}
+- displays index.ejs
+  
+2. app.get("/find", (req, res) => {...}
+- displays find.ejs
 
-"add"
-"addPoint"
-"list"
-"listPoint"
-"distance"
-"distancePoint" 
-"
+3. app.get("/add", (req, res) => {...}
+- displays form.ejs
+
+4. app.post("/addPoint", async (req, res) => {...}
+- 
+
+5. app.get("/list", (req, res) => {...}
+- displays list.ejs
+
+6. app.post("/listPoint", async (req, res) => {...}
+ - 
+ 
+7. app.get("/distance", (req, res) => {...}
+- displays distance.ejs
+
+8. app.post("/distancePoint", async (req, res) => {...}
+- 
 
 
 
@@ -50,7 +63,7 @@ Contain links to tasks
 Find the coordinates of any point on the map
 - HTML and API map stuff
 - API stuff, handled by someone else
-> Endpoint named "/find" is called with a get request in .js to display this
+> Endpoint named "/findpoint" is called with a get request in .js to display this
 
 ## form.ejs
 HTML form that takes in user input to add a point to the database
