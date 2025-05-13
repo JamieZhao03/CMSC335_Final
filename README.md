@@ -15,24 +15,37 @@ Deployed App Link - Link to the online deployment of the app (e.g., link to Rend
 
 # Notes
 
-## Node.js: 
+## index.js: 
 We are going to have endpoints to different EJS files detailed below. Get ejs endpoints to display HTML
 
 distance.ejs endpoint
  - requires MongoDB
  - processes MongoDB into HTML
  - res.sends processed coordinates into HTML
+
+
  
 
 ## index.ejs:
-HOME page: just HTML, called with res.render("index")
+HOME page: just HTML display of our lines
 Contain links to tasks
+- Find Coordinates
+- Add New Geocache
+- List All Geocaches
+- Find Distance between Geocaches
+
+## findpoint.ejs
+Find the coordinates of any point on a map
 
 ## form.ejs
-
+Form that takes in user input:
+- Name of Location (string)
+- Latitude (float)
+- Longitude (float)
+- Notes
 
 ## list.ejs
-
+Button that says "List Locations"
 
 ## distance.ejs
 Displays HTML of a form with two inputs
