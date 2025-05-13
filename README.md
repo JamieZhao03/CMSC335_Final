@@ -1,7 +1,7 @@
 # CMSC335_Final
 Who Submitted the Project in the Submit Server - Name and directory id of the group member that uploaded the application to the submit server.
 
-Group Members - Jamie Zhao (118853666), Annika Kulkarni (118747668)
+Group Members - Jamie Zhao (jzhao111), Annika Kulkarni (annika14)
 
 App Description - A geocaching diary where you record coordinates of caches you found, list all recorded locations, and find distances between geocaches. 
 
