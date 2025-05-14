@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/find", (req, res) => {
-  res.render("findpoint");
+  res.render("find");
 });
 
 app.get("/add", (req, res) => {
@@ -88,36 +88,68 @@ app.get("/distance", (req, res) => {
 });
 
 app.post("/distancePoints", async (req, res) => {
-  const { pointA, pointB } = req.body;
-  const a = await points.findOne({ name: pointA });
-  const b = await points.findOne({ name: pointB });
+    const {
+      aType, bType,
+      pointA_name, pointA_lat, pointA_lon,
+      pointB_name, pointB_lat, pointB_lon
+    } = req.body;
+  
+    let lat1, lon1, lat2, lon2;
+  
+    // Point A processing
+    if (aType === "name") {
+      const a = await points.findOne({ name: pointA_name });
+      if (!a) {
+        return res.send(`<h1>Error</h1>
+          Point A name not found.<br>
+          <a href="/distance">Try Again</a>`);
+      }
+      lat1 = a.latitude;
+      lon1 = a.longitude;
+    } else {
+      lat1 = parseFloat(pointA_lat);
+      lon1 = parseFloat(pointA_lon);
+      if (isNaN(lat1) || isNaN(lon1)) {
+        return res.send(`<h1>Error</h1>
+          Invalid coordinates for Point A.<br>
+          <a href="/distance">Try Again</a>`);
+      }
+    }
+  
+    // Point B processing
+    if (bType === "name") {
+      const b = await points.findOne({ name: pointB_name });
+      if (!b) {
+        return res.send(`<h1>Error</h1>
+          Point B name not found.<br>
+          <a href="/distance">Try Again</a>`);
+      }
+      lat2 = b.latitude;
+      lon2 = b.longitude;
+    } else {
+      lat2 = parseFloat(pointB_lat);
+      lon2 = parseFloat(pointB_lon);
+      if (isNaN(lat2) || isNaN(lon2)) {
+        return res.send(`<h1>Error</h1>
+          Invalid coordinates for Point B.<br>
+          <a href="/distance">Try Again</a>`);
+      }
+    }
+    //distance for the point gotten here
+    const distance = getDistance(lat1, lon1, lat2, lon2).toFixed(2);
+    const date = new Date().toString();
+  
+    res.send(`<h1>Distance Between Points</h1>
+              <strong>Point A:</strong> (${lat1}, ${lon1})<br>
+              <strong>Point B:</strong> (${lat2}, ${lon2})<br>
+              <strong>Distance:</strong> ${distance} km<br><br>
+              Task completed at ${date}<br>
+              <a href="/">HOME</a>`);
+  });
 
-  if (!a || !b) {
-    return res.send(`<h1>Error</h1>
-                     One or both points not found in the database.<br>
-                     <a href="/distance">Try Again</a>`);
-  }
-
-  const distance = getDistance(a.latitude, a.longitude, b.latitude, b.longitude).toFixed(2);
-  const date = new Date().toString();
-  res.send(`<h1>Distance Between Geocaches</h1>
-            <strong>Point A:</strong> ${pointA}<br>
-            <strong>Point B:</strong> ${pointB}<br>
-            <strong>Distance:</strong> ${distance} km<br><br>
-            Task completed at ${date}<br>
-            <a href="/">HOME</a>`);
-});
-
+//JAMIE make it API instead of placeholder
 function getDistance(lat1, lon1, lat2, lon2) {
-  const toRad = angle => angle * (Math.PI / 180);
-  const R = 6371; // Earth radius in km
-  const dLat = toRad(lat2 - lat1);
-  const dLon = toRad(lon2 - lon1);
-  const a = Math.sin(dLat / 2) ** 2 +
-            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-            Math.sin(dLon / 2) ** 2;
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
+  return 14;
 }
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });

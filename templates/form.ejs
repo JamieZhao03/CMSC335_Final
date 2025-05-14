@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Geocache</title>
+</head>
+<body>
+  <h1>Add a New Geocache</h1>
+  <form action="/addPoint" method="POST">
+    <label for="name">Name of Location:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="latitude">Latitude:</label><br>
+    <input type="number" step="any" id="latitude" name="latitude" required><br><br>
+
+    <label for="longitude">Longitude:</label><br>
+    <input type="number" step="any" id="longitude" name="longitude" required><br><br>
+
+    <label for="notes">Notes:</label><br>
+    <textarea id="notes" name="notes" rows="4" cols="40"></textarea><br><br>
+
+    <button type="submit">Submit Geocache</button>
+  </form>
+  <br>
+  <a href="/">HOME</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Distance Between Geocaches</title>
+</head>
+<body>
+  <h1>Calculate Distance Between Two Geocaches</h1>
+
+  <form action="/distancePoints" method="POST">
+    <fieldset>
+      <legend>Point A</legend>
+      <label><input type="radio" name="aType" value="name" checked> Use Name</label><br>
+      <input type="text" name="pointA_name" placeholder="Location Name"><br><br>
+
+      <label><input type="radio" name="aType" value="coord"> Use Coordinates</label><br>
+      Latitude: <input type="number" step="any" name="pointA_lat"><br>
+      Longitude: <input type="number" step="any" name="pointA_lon"><br>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Point B</legend>
+      <label><input type="radio" name="bType" value="name" checked> Use Name</label><br>
+      <input type="text" name="pointB_name" placeholder="Location Name"><br><br>
+
+      <label><input type="radio" name="bType" value="coord"> Use Coordinates</label><br>
+      Latitude: <input type="number" step="any" name="pointB_lat"><br>
+      Longitude: <input type="number" step="any" name="pointB_lon"><br>
+    </fieldset>
+
+    <br>
+    <button type="submit">Calculate Distance</button>
+  </form>
+
+  <br>
+  <a href="/">HOME</a>
+</body>
+</html>
