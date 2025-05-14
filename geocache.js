@@ -59,7 +59,6 @@ app.post("/addPoint", async (req, res) => {
             <strong>Latitude:</strong> ${latitude}<br>
             <strong>Longitude:</strong> ${longitude}<br>
             <strong>Notes:</strong> ${notes}<br><br>
-            Task completed at ${date}<br>
             <a href="/">HOME</a>`);
 });
 
@@ -143,7 +142,6 @@ app.post("/distancePoints", async (req, res) => {
               <strong>Point A:</strong> (${lat1}, ${lon1})<br>
               <strong>Point B:</strong> (${lat2}, ${lon2})<br>
               <strong>Distance:</strong> ${distance} km<br><br>
-              Task completed at ${date}<br>
               <a href="/">HOME</a>`);
   });
 
