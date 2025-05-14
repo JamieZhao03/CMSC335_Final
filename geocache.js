@@ -4,6 +4,8 @@ const path = require("path");
 const readline = require("readline");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 const PORT = process.argv[2];
 app.set("view engine", "ejs");
