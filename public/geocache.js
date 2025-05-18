@@ -148,13 +148,15 @@ app.post("/distancePoints", async (req, res) => {
   });
 
 //JAMIE make it API instead of placeholder
-/*
-const map = L.map('map').setView([0, 0], 2);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
+let map;
 let marker1, marker2, line;
+
+function initMap() {
+  map = L.map('map').setView([0, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+}
 
 function getDistance(lat1, lon1, lat2, lon2) {
   const pointA = L.latLng(lat1, lon1);
@@ -162,7 +164,9 @@ function getDistance(lat1, lon1, lat2, lon2) {
   return pointA.distanceTo(pointB); // in meters
 }
 
-function calculateDistance() {
+function calculateDistance(event) {
+  event.preventDefault();
+
   const lat1 = parseFloat(document.getElementById('pointA_lat').value);
   const lon1 = parseFloat(document.getElementById('pointA_lon').value);
   const lat2 = parseFloat(document.getElementById('pointB_lat').value);
@@ -173,29 +177,30 @@ function calculateDistance() {
     return;
   }
 
-  // Remove old markers and line
   if (marker1) map.removeLayer(marker1);
   if (marker2) map.removeLayer(marker2);
   if (line) map.removeLayer(line);
 
-  // Add new markers
   marker1 = L.marker([lat1, lon1]).addTo(map).bindPopup("Point A").openPopup();
   marker2 = L.marker([lat2, lon2]).addTo(map).bindPopup("Point B");
-
-  // Draw line
   line = L.polyline([[lat1, lon1], [lat2, lon2]], { color: 'blue' }).addTo(map);
 
-  // Zoom map to fit
   map.fitBounds(line.getBounds(), { padding: [20, 20] });
 
-  // Calculate and show distance
   const distanceMeters = getDistance(lat1, lon1, lat2, lon2);
   const distanceKm = (distanceMeters / 1000).toFixed(2);
-
   document.getElementById('result').textContent =
     `Distance: ${distanceKm} kilometers (${distanceMeters.toFixed(0)} meters)`;
 }
-*/
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('distanceForm');
+  if (form) {
+    initMap();
+    form.addEventListener('submit', calculateDistance);
+  }
+});
+
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
