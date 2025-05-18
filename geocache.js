@@ -148,8 +148,51 @@ app.post("/distancePoints", async (req, res) => {
   });
 
 //JAMIE make it API instead of placeholder
+const map = L.map('map').setView([0, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+let marker1, marker2, line;
+
 function getDistance(lat1, lon1, lat2, lon2) {
-  return 14;
+  const pointA = L.latLng(lat1, lon1);
+  const pointB = L.latLng(lat2, lon2);
+  return pointA.distanceTo(pointB); // in meters
+}
+
+function calculateDistance() {
+  const lat1 = parseFloat(document.getElementById('lat1').value);
+  const lon1 = parseFloat(document.getElementById('lon1').value);
+  const lat2 = parseFloat(document.getElementById('lat2').value);
+  const lon2 = parseFloat(document.getElementById('lon2').value);
+
+  if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
+    alert("Please enter valid numeric coordinates.");
+    return;
+  }
+
+  // Remove old markers and line
+  if (marker1) map.removeLayer(marker1);
+  if (marker2) map.removeLayer(marker2);
+  if (line) map.removeLayer(line);
+
+  // Add new markers
+  marker1 = L.marker([lat1, lon1]).addTo(map).bindPopup("Point A").openPopup();
+  marker2 = L.marker([lat2, lon2]).addTo(map).bindPopup("Point B");
+
+  // Draw line
+  line = L.polyline([[lat1, lon1], [lat2, lon2]], { color: 'blue' }).addTo(map);
+
+  // Zoom map to fit
+  map.fitBounds(line.getBounds(), { padding: [20, 20] });
+
+  // Calculate and show distance
+  const distanceMeters = getDistance(lat1, lon1, lat2, lon2);
+  const distanceKm = (distanceMeters / 1000).toFixed(2);
+
+  document.getElementById('result').textContent =
+    `Distance: ${distanceKm} kilometers (${distanceMeters.toFixed(0)} meters)`;
 }
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
