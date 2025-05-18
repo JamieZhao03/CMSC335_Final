@@ -162,10 +162,10 @@ function getDistance(lat1, lon1, lat2, lon2) {
 }
 
 function calculateDistance() {
-  const lat1 = parseFloat(document.getElementById('lat1').value);
-  const lon1 = parseFloat(document.getElementById('lon1').value);
-  const lat2 = parseFloat(document.getElementById('lat2').value);
-  const lon2 = parseFloat(document.getElementById('lon2').value);
+  const lat1 = parseFloat(document.getElementById('pointA_lat').value);
+  const lon1 = parseFloat(document.getElementById('pointA_lon').value);
+  const lat2 = parseFloat(document.getElementById('pointB_lat').value);
+  const lon2 = parseFloat(document.getElementById('pointB_lon').value);
 
   if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
     alert("Please enter valid numeric coordinates.");
