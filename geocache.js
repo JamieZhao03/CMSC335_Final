@@ -30,7 +30,7 @@ let db, points;
 
     app.listen(PORT, () => {
       console.log(`Web server started and running at http://localhost:${PORT}`);
-      promptUser();
+      //promptUser();
     });
   } catch (e) {
     console.error("MongoDB connection failed:", e);
