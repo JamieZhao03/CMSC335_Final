@@ -147,6 +147,7 @@ app.post("/distancePoints", async (req, res) => {
   });
 
 //JAMIE make it API instead of placeholder
+/*
 const map = L.map('map').setView([0, 0], 2);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
@@ -193,6 +194,7 @@ function calculateDistance() {
   document.getElementById('result').textContent =
     `Distance: ${distanceKm} kilometers (${distanceMeters.toFixed(0)} meters)`;
 }
+*/
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
