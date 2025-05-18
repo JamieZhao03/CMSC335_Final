@@ -35,53 +35,8 @@
     <br>
     <button type="submit">Calculate Distance</button>
   </form>
-
-  <p id="result"></p>
-  <div id="map"></div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script>
-    const map = L.map('map').setView([0, 0], 2);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    let marker1, marker2, line;
-
-    function getDistance(lat1, lon1, lat2, lon2) {
-      const pointA = L.latLng(lat1, lon1);
-      const pointB = L.latLng(lat2, lon2);
-      return pointA.distanceTo(pointB);
-    }
-
-    document.getElementById('distanceForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const lat1 = parseFloat(document.getElementById('pointA_lat').value);
-      const lon1 = parseFloat(document.getElementById('pointA_lon').value);
-      const lat2 = parseFloat(document.getElementById('pointB_lat').value);
-      const lon2 = parseFloat(document.getElementById('pointB_lon').value);
-
-      if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
-        alert("Please enter valid numeric coordinates.");
-        return;
-      }
-
-      if (marker1) map.removeLayer(marker1);
-      if (marker2) map.removeLayer(marker2);
-      if (line) map.removeLayer(line);
-
-      marker1 = L.marker([lat1, lon1]).addTo(map).bindPopup("Point A").openPopup();
-      marker2 = L.marker([lat2, lon2]).addTo(map).bindPopup("Point B");
-      line = L.polyline([[lat1, lon1], [lat2, lon2]], { color: 'blue' }).addTo(map);
-
-      map.fitBounds(line.getBounds(), { padding: [20, 20] });
-
-      const distanceMeters = getDistance(lat1, lon1, lat2, lon2);
-      const distanceKm = (distanceMeters / 1000).toFixed(2);
-      document.getElementById('result').textContent = `Distance: ${distanceKm} km (${Math.round(distanceMeters)} m)`;
-    });
-  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/geocache.js"></script>
   <br>
   <a href="/">HOME</a>
 </body>
