@@ -5,6 +5,7 @@ const readline = require("readline");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.argv[2];
 app.set("view engine", "ejs");
