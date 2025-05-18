@@ -9,7 +9,7 @@
 <body>
   <h1>Calculate Distance Between Two Geocaches</h1>
 
-  <form>
+  <form action="/distancePoints" method="POST">
     <fieldset>
       <legend>Point A</legend>
       <label><input type="radio" name="aType" value="name" checked> Use Name</label><br>
@@ -40,7 +40,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-  <script src="/js/distance.js"></script>
+  <script src="geocache.js"></script>
   <br>
   <a href="/">HOME</a>
 </body>
