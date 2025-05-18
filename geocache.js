@@ -197,14 +197,14 @@ app.post("/distancePoints", async (req, res) => {
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-function promptUser() {
-  rl.question("Type 'stop' to shut down the server: ", (input) => {
-    if (input === "stop") {
-      console.log("Shutting down the server");
-      process.exit(0);
-    } else {
-      console.log(`Invalid command: ${input}`);
-    }
-    promptUser();
-  });
-}
+// function promptUser() {
+//   rl.question("Type 'stop' to shut down the server: ", (input) => {
+//     if (input === "stop") {
+//       console.log("Shutting down the server");
+//       process.exit(0);
+//     } else {
+//       console.log(`Invalid command: ${input}`);
+//     }
+//     promptUser();
+//   });
+// }
